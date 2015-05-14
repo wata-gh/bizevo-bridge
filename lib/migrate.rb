@@ -10,4 +10,15 @@ module Migrate
       u.save
     end
   end
+
+  def self.worktimes
+    Bizsup::Worktime.where(:date => Date.parse('2015-04-01')..Date.parse('2015-05-31')).each do |bw|
+      w = Worktime.where(:date => bw.date, :psnal_cd => bw.psnal_cd).first_or_initialize
+      attr = bw.attributes
+      attr.delete 'created_at'
+      attr.delete 'updated_at'
+      w.attributes = attr
+      w.save
+    end
+  end
 end
