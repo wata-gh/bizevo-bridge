@@ -1,0 +1,6 @@
+:development:
+  :host: ''
+  :port: ''
+  :base: ''
+  :bind_dn: ''
+  :password: ''
